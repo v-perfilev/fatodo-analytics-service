@@ -19,11 +19,7 @@ Spring app that is used for development of complex microservices with kotlin and
 ### Contract tests
 
 ```
-./gradlew contracts 
-    -Pcontracts
-    -Dmaven.repo.url=URL
-    -Dmaven.repo.username=USERNAME
-    -Dmaven.repo.password=PASSWORD
+./gradlew contractTest
 ```
 
 ### Publish contract stubs to repo
