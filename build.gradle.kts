@@ -121,6 +121,7 @@ sonarqube {
 
 contracts {
     val contractPackage: String by project
+    failOnNoContracts.set(false)
     contractsDslDir.set(file("src/test/resources/contracts"))
     baseClassForTests.set("$contractPackage.ContractBase")
     testFramework.set(org.springframework.cloud.contract.verifier.config.TestFramework.JUNIT5)
