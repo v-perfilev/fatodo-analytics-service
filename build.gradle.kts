@@ -10,7 +10,6 @@ plugins {
     id("org.sonarqube") version "3.3"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
-    kotlin("kapt") version "1.3.72"
 }
 
 group = "com.persoff68.fatodo"
@@ -52,7 +51,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -60,9 +58,9 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.cloud:spring-cloud-starter-loadbalancer")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-    implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
     implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
     implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation("org.hibernate.orm:hibernate-core:6.1.7.Final")
     implementation("mysql:mysql-connector-java:8.0.32")
     implementation("com.h2database:h2:2.1.214")
     implementation("org.liquibase:liquibase-core:4.19.0")
@@ -70,13 +68,14 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-guava:2.14.2")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
-    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("io.micrometer:micrometer-registry-influx:1.10.3")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
-    implementation("org.mapstruct:mapstruct:1.5.3.Final")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
+    implementation("ch.qos.logback:logback-classic:1.2.9")
     runtimeOnly("com.github.danielwegener:logback-kafka-appender:0.2.0-RC2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    kapt("org.mapstruct:mapstruct-processor:1.5.3.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
