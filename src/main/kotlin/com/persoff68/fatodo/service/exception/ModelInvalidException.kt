@@ -12,5 +12,4 @@ class ModelInvalidException : AbstractDatabaseException {
     constructor() : super(HttpStatus.BAD_REQUEST, MESSAGE, FEEDBACK_CODE)
 
     constructor(clazz: Class<Any>) : super(HttpStatus.BAD_REQUEST, clazz.simpleName + MESSAGE_WITH_PARAM, FEEDBACK_CODE)
-
 }

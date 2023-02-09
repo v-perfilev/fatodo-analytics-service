@@ -22,8 +22,8 @@ class SecurityProblemSupport(private val objectMapper: ObjectMapper) : Authentic
         authenticationException: AuthenticationException
     ) {
         val cause = authenticationException.cause
-        val exception = if (authenticationException is InternalAuthenticationServiceException
-            && cause is AbstractException
+        val exception = if (authenticationException is InternalAuthenticationServiceException &&
+            cause is AbstractException
         ) cause else UnauthorizedException()
         AttributeHandler(request, exception).sendError(objectMapper, response)
     }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.test.context.support.WithAnonymousUser
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import java.util.*
+import java.util.UUID
 
 @ExtendWith(SpringExtension::class)
 class SecurityUtilsIT {

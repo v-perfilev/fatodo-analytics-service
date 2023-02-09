@@ -1,6 +1,11 @@
 package com.persoff68.fatodo.exception
 
-import com.persoff68.fatodo.service.exception.*
+import com.persoff68.fatodo.service.exception.DatabaseException
+import com.persoff68.fatodo.service.exception.ModelAlreadyExistsException
+import com.persoff68.fatodo.service.exception.ModelDuplicatedException
+import com.persoff68.fatodo.service.exception.ModelInvalidException
+import com.persoff68.fatodo.service.exception.ModelNotFoundException
+import com.persoff68.fatodo.service.exception.PermissionException
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus

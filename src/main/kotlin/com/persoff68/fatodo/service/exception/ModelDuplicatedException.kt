@@ -12,5 +12,4 @@ class ModelDuplicatedException : AbstractDatabaseException {
     constructor() : super(HttpStatus.CONFLICT, MESSAGE, FEEDBACK_CODE)
 
     constructor(clazz: Class<Any>) : super(HttpStatus.CONFLICT, clazz.simpleName + MESSAGE_WITH_PARAM, FEEDBACK_CODE)
-
 }

@@ -2,7 +2,7 @@ package com.persoff68.fatodo.security.details
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.User
-import java.util.*
+import java.util.UUID
 
 class CustomUserDetails(
     var id: UUID,

@@ -12,5 +12,4 @@ class ModelNotFoundException : AbstractDatabaseException {
     constructor() : super(HttpStatus.NOT_FOUND, MESSAGE, FEEDBACK_CODE)
 
     constructor(clazz: Class<Any>) : super(HttpStatus.NOT_FOUND, clazz.simpleName + MESSAGE_WITH_PARAM, FEEDBACK_CODE)
-
 }

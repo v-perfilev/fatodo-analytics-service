@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
-import java.util.*
+import java.util.UUID
 
 @ExtendWith(MockKExtension::class)
 class JwtTokenProviderTest {
@@ -32,8 +32,7 @@ class JwtTokenProviderTest {
 
     @Test
     fun testGetAuthenticationFromJwt() {
-        val jwt =
-            "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNDQ2Y2I5OS01ZGQ1LTQ4YTgtOWNjMS1kMWI4OTc5NzY4ZmMiLCJ1c2VybmFtZSI6InRlc3RfdGVzdCIsImF1dGhvcml0aWVzIjoiUk9MRV9URVNUIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.AxcHnejWG4Y_edm_ymjO6U92UPKoZTn_a5kLLv4j_M4bvGkCOmMigLET6a9F4DpbVW2zUlnXNyvVY_KpxadEQg"
+        val jwt = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNDQ2Y2I5OS01ZGQ1LTQ4YTgtOWNjMS1kMWI4OTc5NzY4ZmMiLCJ1c2VybmFtZSI6InRlc3RfdGVzdCIsImF1dGhvcml0aWVzIjoiUk9MRV9URVNUIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.AxcHnejWG4Y_edm_ymjO6U92UPKoZTn_a5kLLv4j_M4bvGkCOmMigLET6a9F4DpbVW2zUlnXNyvVY_KpxadEQg"
         val id = UUID.fromString("b446cb99-5dd5-48a8-9cc1-d1b8979768fc")
         val username = "test_test"
         val authorityList = listOf(SimpleGrantedAuthority("ROLE_TEST"))

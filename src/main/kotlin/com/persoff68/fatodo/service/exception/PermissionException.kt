@@ -12,5 +12,4 @@ class PermissionException : AbstractException {
     constructor() : super(HttpStatus.FORBIDDEN, MESSAGE, FEEDBACK_CODE)
 
     constructor(message: String) : super(HttpStatus.FORBIDDEN, message, FEEDBACK_CODE)
-
 }

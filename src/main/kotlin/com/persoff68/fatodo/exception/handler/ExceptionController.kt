@@ -10,12 +10,10 @@ import org.springframework.web.context.request.ServletWebRequest
 
 @RestController
 class ExceptionController : ErrorController {
-
     @GetMapping("/error")
     fun error(request: HttpServletRequest): ResponseEntity<String> {
         val status = AttributeUtils.getStatus(request)
         val body = AttributeUtils.getMessage(ServletWebRequest(request))
         return ResponseEntity.status(status).body(body)
     }
-
 }

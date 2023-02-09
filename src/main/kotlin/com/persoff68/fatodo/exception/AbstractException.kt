@@ -3,7 +3,6 @@ package com.persoff68.fatodo.exception
 import org.springframework.http.HttpStatus
 
 abstract class AbstractException : RuntimeException {
-
     val status: HttpStatus
     val feedbackCode: String?
 
@@ -16,5 +15,4 @@ abstract class AbstractException : RuntimeException {
         this.status = status
         this.feedbackCode = feedbackCode
     }
-
 }
