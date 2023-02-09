@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
 
 class SecurityExceptionTest {
-
     @Test
     fun testForbiddenException() {
         val exception = ForbiddenException()
@@ -25,5 +24,4 @@ class SecurityExceptionTest {
         Assertions.assertThat(abstractException.status).isEqualTo(HttpStatus.UNAUTHORIZED)
         Assertions.assertThat(abstractException.feedbackCode).isEqualTo("security.unauthorized")
     }
-
 }

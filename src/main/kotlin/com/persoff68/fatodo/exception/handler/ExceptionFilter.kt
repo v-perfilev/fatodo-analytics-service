@@ -13,7 +13,6 @@ import org.springframework.web.filter.OncePerRequestFilter
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 class ExceptionFilter(private val objectMapper: ObjectMapper) : OncePerRequestFilter() {
-
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -25,5 +24,4 @@ class ExceptionFilter(private val objectMapper: ObjectMapper) : OncePerRequestFi
             AttributeHandler(request, e).sendError(objectMapper, response)
         }
     }
-
 }

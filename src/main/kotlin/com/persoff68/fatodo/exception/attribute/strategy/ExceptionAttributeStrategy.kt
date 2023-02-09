@@ -9,7 +9,6 @@ class ExceptionAttributeStrategy(
     private val request: HttpServletRequest,
     exception: Exception
 ) : AbstractAttributeStrategy(exception) {
-
     companion object {
         const val REQUEST_URI_PATH = "javax.servlet.error.request_uri"
     }
@@ -20,5 +19,4 @@ class ExceptionAttributeStrategy(
         path = path ?: request.requestURI
         path?.let { errorAttributes["path"] = path }
     }
-
 }

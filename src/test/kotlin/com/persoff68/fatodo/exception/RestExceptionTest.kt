@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
 
 class RestExceptionTest {
-
     @Test
     fun testInvalidFormException() {
         val exception = InvalidFormException()
@@ -15,5 +14,4 @@ class RestExceptionTest {
         Assertions.assertThat(abstractException.status).isEqualTo(HttpStatus.BAD_REQUEST)
         Assertions.assertThat(abstractException.feedbackCode).isEqualTo("form.invalid")
     }
-
 }

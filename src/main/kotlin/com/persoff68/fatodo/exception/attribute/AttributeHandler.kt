@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
 class AttributeHandler(request: HttpServletRequest, exception: Exception) {
-
     private var attributeStrategy: AttributeStrategy
 
     init {
@@ -40,5 +39,4 @@ class AttributeHandler(request: HttpServletRequest, exception: Exception) {
     private fun getStatus(): HttpStatus {
         return attributeStrategy.getStatus()
     }
-
 }

@@ -16,7 +16,6 @@ annotation class WithCustomSecurityContext(
     val jwt: String = "test_jwt",
     val authority: String = "ROLE_TEST"
 ) {
-
     class WithCustomSecurityContextFactory : WithSecurityContextFactory<WithCustomSecurityContext> {
         override fun createSecurityContext(customSecurityContext: WithCustomSecurityContext): SecurityContext {
             val securityContext = SecurityContextHolder.createEmptyContext()
@@ -36,7 +35,5 @@ annotation class WithCustomSecurityContext(
             securityContext.authentication = authentication
             return securityContext
         }
-
     }
-
 }

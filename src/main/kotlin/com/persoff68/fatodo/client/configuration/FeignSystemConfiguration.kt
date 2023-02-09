@@ -5,7 +5,6 @@ import com.persoff68.fatodo.security.jwt.JwtTokenProvider
 import feign.RequestInterceptor
 
 class FeignSystemConfiguration {
-
     fun requestInterceptor(appProperties: AppProperties, jwtTokenProvider: JwtTokenProvider): RequestInterceptor {
         return RequestInterceptor { requestTemplate ->
             val jwt = jwtTokenProvider.createSystemJwt()
@@ -14,5 +13,4 @@ class FeignSystemConfiguration {
             requestTemplate.header(header, value)
         }
     }
-
 }

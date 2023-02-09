@@ -6,7 +6,6 @@ import com.persoff68.fatodo.security.util.SecurityUtils
 import feign.RequestInterceptor
 
 class FeignAuthConfiguration {
-
     fun requestInterceptor(appProperties: AppProperties): RequestInterceptor {
         return RequestInterceptor { requestTemplate ->
             val jwt = SecurityUtils.getCurrentJwt() ?: throw UnauthorizedException()
@@ -15,5 +14,4 @@ class FeignAuthConfiguration {
             requestTemplate.header(header, value)
         }
     }
-
 }

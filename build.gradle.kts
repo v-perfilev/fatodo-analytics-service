@@ -8,6 +8,7 @@ plugins {
     id("jacoco")
     id("maven-publish")
     id("org.sonarqube") version "3.3"
+    id("org.jlleitschuh.gradle.ktlint") version "11.1.0"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
 }
@@ -83,7 +84,6 @@ dependencies {
     testImplementation("com.h2database:h2:2.1.214")
 }
 
-
 sourceSets {
     create("unitTest") {
         kotlin.srcDir("src/test/kotlin")
@@ -124,7 +124,7 @@ publishing {
     publications {
         create<MavenPublication>("stubs") {
             artifactId = project.description
-            artifact("${buildDir}/libs/${project.description}-${project.version}-stubs.jar")
+            artifact("$buildDir/libs/${project.description}-${project.version}-stubs.jar")
         }
     }
     repositories {
@@ -182,4 +182,3 @@ tasks.jacocoTestReport {
     dependsOn(tasks.getByPath("unitTest"))
     dependsOn(tasks.getByPath("integrationTest"))
 }
-

@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @SpringBootTest
 @AutoConfigureMockMvc
 class JwtTokenFilterIT(@Autowired val mvc: MockMvc) {
-
     @Value("\${test.jwt.user}")
     lateinit var userJwt: String
 
@@ -82,5 +81,4 @@ class JwtTokenFilterIT(@Autowired val mvc: MockMvc) {
         mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
             .andExpect(MockMvcResultMatchers.status().isUnauthorized)
     }
-
 }

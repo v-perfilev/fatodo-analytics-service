@@ -1,7 +1,6 @@
 package com.persoff68.fatodo.config.constant
 
 object AppConstants {
-
     const val REPOSITORY_PATH = "com.persoff68.fatodo.repository"
     const val FEIGN_CLIENT_PATH = "com.persoff68.fatodo.client"
     const val TASK_PATH = "com.persoff68.fatodo.task"
@@ -11,5 +10,4 @@ object AppConstants {
     const val SYSTEM_USERNAME = "system"
     const val SYSTEM_AUTHORITY = "ROLE_SYSTEM"
     const val SYSTEM_TOKEN_EXPIRATION_SEC = 60L
-
 }

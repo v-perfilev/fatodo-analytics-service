@@ -10,12 +10,12 @@ import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.domain.Persistable
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import java.util.*
+import java.util.Date
+import java.util.UUID
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class AbstractAuditingModel : AbstractModel(), Persistable<UUID> {
-
     @CreatedBy
     protected var createdBy: UUID? = null
 
@@ -33,5 +33,4 @@ abstract class AbstractAuditingModel : AbstractModel(), Persistable<UUID> {
     override fun isNew(): Boolean {
         return createdBy == null && createdAt == null
     }
-
 }

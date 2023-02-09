@@ -9,10 +9,8 @@ import org.springframework.web.context.WebApplicationContext
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMessageVerifier
 abstract class ContractBase(private val context: WebApplicationContext) {
-
     @BeforeEach
     fun setup() {
         RestAssuredMockMvc.webAppContextSetup(context)
     }
-
 }

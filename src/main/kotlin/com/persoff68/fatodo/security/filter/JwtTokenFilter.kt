@@ -17,7 +17,6 @@ class JwtTokenFilter(
     private val jwtTokenProvider: JwtTokenProvider,
     private val appProperties: AppProperties
 ) : OncePerRequestFilter() {
-
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -49,5 +48,4 @@ class JwtTokenFilter(
         }
         return jwt
     }
-
 }

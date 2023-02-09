@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component
 
 @Component
 class SecurityProblemSupport(private val objectMapper: ObjectMapper) : AuthenticationEntryPoint, AccessDeniedHandler {
-
     override fun commence(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -37,5 +36,4 @@ class SecurityProblemSupport(private val objectMapper: ObjectMapper) : Authentic
         val exception = ForbiddenException()
         AttributeHandler(request, exception).sendError(objectMapper, response)
     }
-
 }

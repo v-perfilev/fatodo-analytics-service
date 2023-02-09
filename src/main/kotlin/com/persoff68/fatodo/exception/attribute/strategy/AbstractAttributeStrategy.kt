@@ -2,10 +2,9 @@ package com.persoff68.fatodo.exception.attribute.strategy
 
 import com.persoff68.fatodo.exception.AbstractException
 import org.springframework.http.HttpStatus
-import java.util.*
+import java.util.Date
 
 abstract class AbstractAttributeStrategy(private val exception: Exception) : AttributeStrategy {
-
     val errorAttributes = LinkedHashMap<String, Any>()
 
     override fun getErrorAttributes(): Map<String, Any> {

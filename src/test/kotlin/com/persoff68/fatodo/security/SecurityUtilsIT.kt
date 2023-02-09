@@ -4,14 +4,14 @@ import com.persoff68.fatodo.annotation.WithCustomSecurityContext
 import com.persoff68.fatodo.security.util.SecurityUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.test.context.support.WithAnonymousUser
+import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.util.*
 
-@SpringBootTest
+@ExtendWith(SpringExtension::class)
 class SecurityUtilsIT {
-
     @Test
     @WithAnonymousUser
     fun testGetCurrentId_ifAnonymous() {
@@ -76,6 +76,4 @@ class SecurityUtilsIT {
             .contains(SimpleGrantedAuthority("ROLE_TEST"))
             .hasSize(1)
     }
-
-
 }

@@ -1,11 +1,9 @@
 package com.persoff68.fatodo.config.constant
 
-import com.persoff68.fatodo.config.constant.AuthorityType
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
 class AuthorityTypeTest {
-
     @Test
     fun testEnum() {
         Assertions.assertThat(AuthorityType.ADMIN.getValue()).isEqualTo("ROLE_ADMIN")
@@ -20,5 +18,4 @@ class AuthorityTypeTest {
         val isFalse: Boolean = AuthorityType.contains("ROLE_NOT_EXISTS")
         Assertions.assertThat(isFalse).isFalse
     }
-
 }

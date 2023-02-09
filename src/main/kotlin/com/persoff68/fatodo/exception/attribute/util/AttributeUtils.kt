@@ -40,5 +40,4 @@ object AttributeUtils {
     private fun getError(webRequest: WebRequest): Throwable? {
         return getAttribute(webRequest, EXCEPTION_PATH)
     }
-
 }

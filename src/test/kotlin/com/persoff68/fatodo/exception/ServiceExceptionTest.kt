@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
 
 class ServiceExceptionTest {
-
     @Test
     fun testDatabaseException() {
         val exception = DatabaseException()
@@ -105,5 +104,4 @@ class ServiceExceptionTest {
         Assertions.assertThat(abstractException.status).isEqualTo(HttpStatus.FORBIDDEN)
         Assertions.assertThat(abstractException.feedbackCode).isEqualTo("permission.restricted")
     }
-
 }

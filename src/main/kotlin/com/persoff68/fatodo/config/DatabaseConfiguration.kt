@@ -14,7 +14,6 @@ import javax.sql.DataSource
 @EnableJpaAuditing(auditorAwareRef = "securityAuditorAware")
 @EnableTransactionManagement
 class DatabaseConfiguration(private val dataSource: DataSource) {
-
     @Bean
     fun liquibase(): SpringLiquibase {
         val liquibase = SpringLiquibase()
@@ -22,5 +21,4 @@ class DatabaseConfiguration(private val dataSource: DataSource) {
         liquibase.dataSource = dataSource
         return liquibase
     }
-
 }

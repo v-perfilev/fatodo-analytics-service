@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @SpringBootTest
 @AutoConfigureMockMvc
 class ExtendedMysqlKotlinSkeletonApplicationTests(@Autowired val mvc: MockMvc) {
-
     @Test
     @WithCustomSecurityContext
     fun contextLoads() {
@@ -30,5 +29,4 @@ class ExtendedMysqlKotlinSkeletonApplicationTests(@Autowired val mvc: MockMvc) {
         mvc.perform(MockMvcRequestBuilders.get("/wrong-path"))
             .andExpect(MockMvcResultMatchers.status().isNotFound)
     }
-
 }

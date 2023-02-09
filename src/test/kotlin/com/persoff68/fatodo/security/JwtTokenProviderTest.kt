@@ -17,7 +17,6 @@ import java.util.*
 
 @ExtendWith(MockKExtension::class)
 class JwtTokenProviderTest {
-
     private lateinit var jwtTokenProvider: JwtTokenProvider
     private lateinit var appProperties: AppProperties
     private lateinit var auth: AppProperties.Auth
@@ -56,5 +55,4 @@ class JwtTokenProviderTest {
         assertThat(isValid).isTrue
         assertThat(hasSystemAuthority).isTrue
     }
-
 }

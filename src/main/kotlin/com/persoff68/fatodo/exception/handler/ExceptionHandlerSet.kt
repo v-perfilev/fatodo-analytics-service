@@ -14,7 +14,6 @@ import java.io.IOException
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE + 100)
 class ExceptionHandlerSet(private val objectMapper: ObjectMapper) {
-
     @ExceptionHandler(AbstractException::class)
     @Throws(IOException::class)
     fun handleAbstractException(request: HttpServletRequest, e: AbstractException): ResponseEntity<String> {
@@ -34,5 +33,4 @@ class ExceptionHandlerSet(private val objectMapper: ObjectMapper) {
     fun handleException(request: HttpServletRequest, e: Exception): ResponseEntity<String> {
         return AttributeHandler(request, e).getResponseEntity(objectMapper)
     }
-
 }

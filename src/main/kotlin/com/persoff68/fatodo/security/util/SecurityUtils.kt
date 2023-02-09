@@ -5,10 +5,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
-import java.util.*
+import java.util.UUID
 
 object SecurityUtils {
-
     fun getUuidFromString(id: String): UUID {
         return UUID.fromString(id)
     }
