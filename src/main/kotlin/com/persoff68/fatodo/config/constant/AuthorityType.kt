@@ -10,8 +10,11 @@ enum class AuthorityType(private val value: String) {
         return value
     }
 
-    fun contains(value: String): Boolean {
-        return values().asList().stream().anyMatch { authorityType -> authorityType.value == value }
-    }
+    companion object {
 
+        fun contains(value: String): Boolean {
+            return values().asList().stream().anyMatch { authorityType -> authorityType.value == value }
+        }
+
+    }
 }

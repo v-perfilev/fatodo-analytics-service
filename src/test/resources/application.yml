@@ -1,0 +1,71 @@
+app:
+  auth:
+    authorizationHeader: Authorization
+    authorizationPrefix: Bearer
+    tokenSecret: 4323B829EF1EEF14E324241FB72E6
+    tokenExpirationSec: 864000
+
+stubrunner:
+  idsToServiceIds:
+    authservice: auth-service
+    userservice: user-service
+    itemservice: item-service
+    mailservice: mail-service
+    imageservice: image-service
+    contactservice: contact-service
+    chatservice: chat-service
+    wsservice: ws-service
+    commentservice: comment-service
+    notificationservice: notification-service
+    eventservice: event-service
+  repositoryRoot: '@maven.repo.url@'
+  username: '@maven.repo.username@'
+  password: '@maven.repo.password@'
+
+test:
+  jwt:
+    admin: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwidXNlcm5hbWUiOiJ0ZXN0X2FkbWluIiwiYXV0aG9yaXRpZXMiOiJST0xFX0FETUlOIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.RwSPieOfY1iwF5Tz8ZMw8tiWVZc-nGx4JGgVh08wzV_HrNYZelT9Auo2mcKp6L1PTIBc8cRRlcsvR7YjbiI9qA
+    system: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJ1c2VybmFtZSI6InRlc3Rfc3lzdGVtIiwiYXV0aG9yaXRpZXMiOiJST0xFX1NZU1RFTSIsImlhdCI6MCwiZXhwIjozMjUwMzY3NjQwMH0.roNFKrM7NjEzXvRFRHlJXw0YxSFZ-4Afqvn7eFatpGF14olhXBvCvR9CkPkmlnlCAOYbpDO18krfi6SEX0tQ6Q
+    user: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1MTk4ZjAxNC00YTFlLTQ3NDgtOGM5Yy1iOTQ3Y2EyZGNlMzgiLCJ1c2VybmFtZSI6InRlc3RfdXNlciIsImF1dGhvcml0aWVzIjoiUk9MRV9VU0VSIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.vFdQpH6ZH4d9_andMVilxKqWcbQNe1d9TOFppPWHiY5teUmkTSUXXA3OP6kkeE81mz2MYM2i61wHuZy23xSmbg
+    invalid-expired: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1MTk4ZjAxNC00YTFlLTQ3NDgtOGM5Yy1iOTQ3Y2EyZGNlMzgiLCJ1c2VybmFtZSI6InRlc3RfdXNlciIsImF1dGhvcml0aWVzIjoiUk9MRV9VU0VSIiwiaWF0IjowLCJleHAiOjF9.8OEYlehMSMu_6_C5VvVLnMO7u_jobfI1ruGy1qUhOig785DqYtwvD8Eua8OpuoHi30yWTiO3_gF4zPYAQWMZSw
+    invalid-format: eyJhbGciOiJIUzUxMiJ9..Z9W6euZQEMSqVomaAEvUttG5jDwigScyhIYz_e8bHhYqSyirlP_vbU3xTb3iNMtVTU-rSADh5P-zZzic_aiO3g
+    invalid-wrong-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1MTk4ZjAxNC00YTFlLTQ3NDgtOGM5Yy1iOTQ3Y2EyZGNlMzgiLCJ1c2VybmFtZSI6InRlc3RfdXNlciIsImF1dGhvcml0aWVzIjoiUk9MRV9VU0VSIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.RCunC96AOl9NA4jeFZX5NYuX_OUBQemYduOhRNymALqvh0JGQQ87RJeNrdgCbsVnOUNmcJKTp6FRAPjTA7dHHw
+    invalid-wrong-uuid: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJpbnZhbGlkIiwidXNlcm5hbWUiOiJ0ZXN0X3VzZXIiLCJhdXRob3JpdGllcyI6IlJPTEVfVVNFUiIsImlhdCI6MCwiZXhwIjozMjUwMzY3NjQwMH0.xcg-BTmu5JcgDnLGDJfA0ssf85q_BRaX2W3XNb3Ff2Po5lxTqWNArqpx2DPrbzk8z_IWx8VDVxkmNaLnBlwQ9w
+
+server:
+  address: localhost
+  port: 10344
+
+spring:
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 20000
+            readTimeout: 20000
+  cache:
+    type: none
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:file:./build/h2db/db/fatodo;DB_CLOSE_DELAY=-1
+    username: test
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  h2:
+    console:
+      enabled: false
+  jpa:
+    open-in-view: false
+
+management:
+  influx:
+    metrics:
+      export:
+        enabled: false

@@ -58,31 +58,29 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.cloud:spring-cloud-starter-loadbalancer")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
-    implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
+    implementation("com.github.ben-manes.caffeine:caffeine:3.1.2")
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("org.hibernate.orm:hibernate-core:6.1.7.Final")
     implementation("mysql:mysql-connector-java:8.0.32")
-    implementation("com.h2database:h2:2.1.214")
     implementation("org.liquibase:liquibase-core:4.19.0")
-    implementation("com.github.ben-manes.caffeine:caffeine:3.1.2")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-guava:2.14.2")
-    implementation("javax.xml.bind:jaxb-api:2.3.1")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("io.micrometer:micrometer-registry-influx:1.10.3")
     implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
-    implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
-    implementation("ch.qos.logback:logback-classic:1.2.9")
     runtimeOnly("com.github.danielwegener:logback-kafka-appender:0.2.0-RC2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier")
     testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
     testImplementation("org.springframework.cloud:spring-cloud-contract-stub-runner")
+    testImplementation("io.mockk:mockk:1.13.4")
+    testImplementation("com.h2database:h2:2.1.214")
 }
 
 
@@ -158,6 +156,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
+//    systemProperty("spring.profiles.active", "test")
     useJUnitPlatform()
 }
 

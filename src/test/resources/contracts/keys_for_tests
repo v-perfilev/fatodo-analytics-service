@@ -1,0 +1,51 @@
+Secret: 4323B829EF1EEF14E324241FB72E6
+
+#1 - ROLE_SYSTEM:
+{
+  "sub": "00000000-0000-0000-0000-000000000000",
+  "username": "test_system",
+  "authorities": "ROLE_SYSTEM",
+  "iat": 0,
+  "exp": 32503676400
+}
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJ1c2VybmFtZSI6InRlc3Rfc3lzdGVtIiwiYXV0aG9yaXRpZXMiOiJST0xFX1NZU1RFTSIsImlhdCI6MCwiZXhwIjozMjUwMzY3NjQwMH0.roNFKrM7NjEzXvRFRHlJXw0YxSFZ-4Afqvn7eFatpGF14olhXBvCvR9CkPkmlnlCAOYbpDO18krfi6SEX0tQ6Q
+
+#2 - ROLE_ADMIN:
+{
+  "sub": "f291bad3-bc1a-40f6-88e4-b81d45f5f8c8",
+  "username": "test_admin",
+  "authorities": "ROLE_ADMIN",
+  "iat": 0,
+  "exp": 32503676400
+}
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmMjkxYmFkMy1iYzFhLTQwZjYtODhlNC1iODFkNDVmNWY4YzgiLCJ1c2VybmFtZSI6InRlc3RfYWRtaW4iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJpYXQiOjAsImV4cCI6MzI1MDM2NzY0MDB9.ln5MMyCUx1EjdgVWn1MODz6_34lvzHLNNyzWfP2i4LKTNDYaWw_PC-6WxksP2o8UvpeuFjIlZkNhM_wrkYAV3w
+
+#3 - ROLE_USER:
+{
+  "sub": "8f9a7cae-73c8-4ad6-b135-5bd109b51d2e",
+  "username": "test_user",
+  "authorities": "ROLE_USER",
+  "iat": 0,
+  "exp": 32503676400
+}
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4ZjlhN2NhZS03M2M4LTRhZDYtYjEzNS01YmQxMDliNTFkMmUiLCJ1c2VybmFtZSI6InRlc3RfdXNlciIsImF1dGhvcml0aWVzIjoiUk9MRV9VU0VSIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.Go0MIqfjREMHOLeqoX2Ej3DbeSG7ZxlL4UAvcxqNeO-RgrKUCrgEu77Ty1vgR_upxVGDAWZS-JfuSYPHSRtv-w
+
+#4 - ROLE_USER:
+{
+  "sub": "4329f19c-deb7-4eaa-a841-bb46bd78f793",
+  "username": "test_user",
+  "authorities": "ROLE_USER",
+  "iat": 0,
+  "exp": 32503676400
+}
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MzI5ZjE5Yy1kZWI3LTRlYWEtYTg0MS1iYjQ2YmQ3OGY3OTMiLCJ1c2VybmFtZSI6InRlc3RfdXNlciIsImF1dGhvcml0aWVzIjoiUk9MRV9VU0VSIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.fCqSRDlcM0nuGxeZ7wgd9wJ-TefWrfLueq9PWENCV2zd4z1IZz7oiyZnf1gFET-eUfIFD1-Ny0nl8K-A99UdXQ
+
+#5 - ROLE_TEST:
+{
+  "sub": "b446cb99-5dd5-48a8-9cc1-d1b8979768fc",
+  "username": "test_test",
+  "authorities": "ROLE_TEST",
+  "iat": 0,
+  "exp": 32503676400
+}
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNDQ2Y2I5OS01ZGQ1LTQ4YTgtOWNjMS1kMWI4OTc5NzY4ZmMiLCJ1c2VybmFtZSI6InRlc3RfdGVzdCIsImF1dGhvcml0aWVzIjoiUk9MRV9URVNUIiwiaWF0IjowLCJleHAiOjMyNTAzNjc2NDAwfQ.AxcHnejWG4Y_edm_ymjO6U92UPKoZTn_a5kLLv4j_M4bvGkCOmMigLET6a9F4DpbVW2zUlnXNyvVY_KpxadEQg

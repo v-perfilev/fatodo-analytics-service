@@ -13,7 +13,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 @Component
-class JwtTokenProvider(private var appProperties: AppProperties) {
+class JwtTokenProvider(private val appProperties: AppProperties) {
     companion object {
         private const val USERNAME_KEY = "username"
         private const val AUTHORITY_KEY = "authorities"
@@ -32,7 +32,7 @@ class JwtTokenProvider(private var appProperties: AppProperties) {
         return UsernamePasswordAuthenticationToken(userDetails, jwt, authorityList)
     }
 
-    fun createSystemJwt(): String? {
+    fun createSystemJwt(): String {
         val params = JwtParams(
             UUID.fromString(AppConstants.SYSTEM_ID),
             AppConstants.SYSTEM_USERNAME,
@@ -45,7 +45,7 @@ class JwtTokenProvider(private var appProperties: AppProperties) {
 
     fun validateJwt(jwt: String): Boolean {
         try {
-            val tokenSecret: String = appProperties.auth.tokenSecret
+            val tokenSecret = appProperties.auth.tokenSecret
             val id = Jwts.parser().setSigningKey(tokenSecret).parseClaimsJws(jwt).body.subject
             SecurityUtils.getUuidFromString(id)
             return true
@@ -64,7 +64,7 @@ class JwtTokenProvider(private var appProperties: AppProperties) {
     }
 
     private fun getClaimsFromJwt(jwt: String): Claims {
-        val tokenSecret: String = appProperties.auth.tokenSecret
+        val tokenSecret = appProperties.auth.tokenSecret
         return Jwts.parser()
             .setSigningKey(tokenSecret)
             .parseClaimsJws(jwt)

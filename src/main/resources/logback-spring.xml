@@ -1,0 +1,32 @@
+<configuration>
+    <springProperty scope="context" name="app-name" source="spring.application.name"/>
+    <springProperty scope="context" name="server-name" source="HOSTNAME"/>
+
+    <!-- Stdout Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-20([${app-name}]) %-7([%level]) %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <springProfile name="stage,prod">
+        <!-- Kafka Appender -->
+        <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+            <encoder>
+                <pattern>%d{HH:mm:ss.SSS} %([${app-name}]) %([${server-name}]) %([%level]) %logger{36} - %msg%n</pattern>
+            </encoder>
+            <topic>fatodo-logs</topic>
+            <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
+            <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
+
+            <producerConfig>bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS:-localhost:9092}</producerConfig>
+        </appender>
+        <root level="info">
+            <appender-ref ref="kafkaAppender"/>
+        </root>
+    </springProfile>
+
+</configuration>

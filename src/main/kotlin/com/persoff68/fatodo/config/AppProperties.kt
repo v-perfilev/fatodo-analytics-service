@@ -5,8 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties(prefix = "app")
 class AppProperties {
 
-    lateinit var common: Common
-    lateinit var auth: Auth
+    var common: Common = Common()
+    var auth: Auth = Auth()
 
     class Common {
         var baseUrl: String = ""

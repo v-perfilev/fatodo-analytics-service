@@ -4,7 +4,7 @@ import com.persoff68.fatodo.exception.AbstractException
 import org.springframework.http.HttpStatus
 
 class UnauthorizedException : AbstractException(
-    HttpStatus.FORBIDDEN,
+    HttpStatus.UNAUTHORIZED,
     "Authentication required",
     "security.unauthorized"
 )
