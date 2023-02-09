@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.test.context.support.WithSecurityContext
 import org.springframework.security.test.context.support.WithSecurityContextFactory
 
-@Retention(AnnotationRetention.RUNTIME)
 @WithSecurityContext(factory = WithCustomSecurityContext.WithCustomSecurityContextFactory::class)
 annotation class WithCustomSecurityContext(
     val id: String = "41789d72-3fa5-4019-8205-ccf44213b322",

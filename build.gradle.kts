@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "com.persoff68.fatodo"
-description = "extendedmysqlkotlinskeleton"
+description = "extended-mysql-kotlin-skeleton"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
@@ -87,11 +87,10 @@ dependencies {
 sourceSets {
     create("unitTest") {
         kotlin.srcDir("src/test/kotlin")
-        kotlin.include("**/*Test.*")
         kotlin.exclude("**/*IT.*")
         kotlin.exclude("**/*Tests.*")
         kotlin.exclude("**/contract/*Test.*")
-        resources.srcDir("src/test/kotlin")
+        resources.srcDir("src/test/resources")
         compileClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
         runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
     }
@@ -99,10 +98,7 @@ sourceSets {
     create("integrationTest") {
         kotlin.srcDir("src/test/kotlin")
         kotlin.exclude("**/*Test.*")
-        kotlin.include("**/*IT.*")
-        kotlin.include("**/*Tests.*")
-        kotlin.include("**/contract/*Test.*")
-        resources.srcDir("src/test/kotlin")
+        resources.srcDir("src/test/resources")
         compileClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
         runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
     }
@@ -156,7 +152,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
-//    systemProperty("spring.profiles.active", "test")
     useJUnitPlatform()
 }
 
