@@ -144,6 +144,15 @@ publishing {
     }
 }
 
+graalvmNative {
+    binaries {
+        named("main") {
+            imageName.set("fatodo")
+            buildArgs.add("-J-Xmx3G")
+        }
+    }
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
