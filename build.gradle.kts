@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "com.persoff68.fatodo"
-description = "extended-mysql-kotlin-skeleton"
+description = "fatodo-analytics-service"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 

@@ -7,8 +7,8 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @EnableConfigurationProperties(AppProperties::class)
-class ExtendedMysqlKotlinSkeletonApplication
+class FatodoAnalyticsServiceApplication
 
 fun main(args: Array<String>) {
-    runApplication<ExtendedMysqlKotlinSkeletonApplication>(*args)
+    runApplication<FatodoAnalyticsServiceApplication>(*args)
 }

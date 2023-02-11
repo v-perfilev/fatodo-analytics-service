@@ -1,1 +1,1 @@
-rootProject.name = "extended-mysql-kotlin-skeleton"
+rootProject.name = "fatodo-analytics-service"

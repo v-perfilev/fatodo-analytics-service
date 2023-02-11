@@ -1,6 +1,6 @@
-# Fatodo extended-mysql-kotlin-skeleton
+# Fatodo analytics-service
 
-Spring app that is used for development of complex microservices with kotlin and mysql.
+Analytics service for Fatodo based on extended mysql kotlin skeleton.
 
 ## Tests
 

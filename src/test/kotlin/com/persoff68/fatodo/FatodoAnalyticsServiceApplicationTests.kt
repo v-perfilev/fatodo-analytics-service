@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ExtendedMysqlKotlinSkeletonApplicationTests(@Autowired val mvc: MockMvc) {
+class FatodoAnalyticsServiceApplicationTests(@Autowired val mvc: MockMvc) {
     @Test
     @WithCustomSecurityContext
     fun contextLoads() {
