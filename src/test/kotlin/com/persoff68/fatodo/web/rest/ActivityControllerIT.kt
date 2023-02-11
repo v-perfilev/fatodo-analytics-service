@@ -79,6 +79,18 @@ class ActivityControllerIT(
     }
 
     @Test
+    @WithCustomSecurityContext(id = USER_ID_1)
+    fun testWriteActivity_invalid() {
+        val vm = ActivityVM()
+        mvc.put(ActivityController.ENDPOINT) {
+            contentType = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(vm)
+        }.andExpect {
+            status { isBadRequest() }
+        }
+    }
+
+    @Test
     @WithAnonymousUser
     fun testWriteActivity_unauthorized() {
         val vm = ActivityVM(DeviceType.ANDROID, DEVICE_ID)

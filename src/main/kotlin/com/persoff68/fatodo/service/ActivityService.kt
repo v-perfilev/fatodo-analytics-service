@@ -3,12 +3,14 @@ package com.persoff68.fatodo.service
 import com.persoff68.fatodo.model.Activity
 import com.persoff68.fatodo.model.constant.DeviceType
 import com.persoff68.fatodo.repository.ActivityRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.UUID
 
 @Service
+@Transactional
 class ActivityService(private val activityRepository: ActivityRepository) {
     companion object {
         private const val THRESHOLD_SECONDS = 60L

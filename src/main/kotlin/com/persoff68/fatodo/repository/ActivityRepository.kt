@@ -2,6 +2,7 @@ package com.persoff68.fatodo.repository
 
 import com.persoff68.fatodo.model.Activity
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
@@ -28,5 +29,6 @@ interface ActivityRepository : JpaRepository<Activity, UUID> {
             where a.createdAt = a.lastModifiedAt and a.lastModifiedAt > :threshold
         """
     )
+    @Modifying
     fun deleteNotModified(@Param("threshold") threshold: Instant)
 }

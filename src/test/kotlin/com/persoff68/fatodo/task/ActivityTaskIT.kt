@@ -1,6 +1,5 @@
 package com.persoff68.fatodo.task
 
-import com.persoff68.fatodo.annotation.WithCustomSecurityContext
 import com.persoff68.fatodo.model.Activity
 import com.persoff68.fatodo.model.constant.DeviceType
 import com.persoff68.fatodo.repository.ActivityRepository
@@ -25,8 +24,7 @@ class ActivityTaskIT(
     }
 
     @Test
-    @WithCustomSecurityContext(id = ActivityControllerIT.USER_ID_1)
-    fun testWriteActivity_ok_current() {
+    fun testDeleteEmptyActivities() {
         activityTask.deleteEmptyActivities()
         val activityList = activityRepository.findAll()
         assertThat(activityList).isEmpty()

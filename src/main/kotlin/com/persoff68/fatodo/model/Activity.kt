@@ -10,6 +10,6 @@ import jakarta.persistence.Table
 @Table(name = "ftd_analytics_activity")
 class Activity(
     @Enumerated(EnumType.STRING)
-    val deviceType: DeviceType = DeviceType.WEB,
-    val deviceId: String = ""
+    val deviceType: DeviceType? = null,
+    val deviceId: String? = null
 ) : AbstractAuditingModel()

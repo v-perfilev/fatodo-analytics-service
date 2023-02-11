@@ -19,9 +19,9 @@ class ActivityController(private val activityService: ActivityService) {
     }
 
     @PutMapping
-    fun writeActivity(@RequestBody @Valid vm: ActivityVM): ResponseEntity<Unit> {
+    fun writeActivity(@Valid @RequestBody vm: ActivityVM): ResponseEntity<Unit> {
         val userId = SecurityUtils.getCurrentId() ?: throw UnauthorizedException()
-        activityService.writeActivity(userId, vm.deviceType, vm.deviceId)
+        activityService.writeActivity(userId, vm.deviceType!!, vm.deviceId!!)
         return ResponseEntity.ok().build()
     }
 }

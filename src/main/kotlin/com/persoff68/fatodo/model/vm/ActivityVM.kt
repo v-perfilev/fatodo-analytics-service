@@ -4,8 +4,6 @@ import com.persoff68.fatodo.model.constant.DeviceType
 import jakarta.validation.constraints.NotNull
 
 class ActivityVM(
-    @NotNull var deviceType: DeviceType,
-    @NotNull var deviceId: String
-) {
-    constructor() : this(DeviceType.WEB, "")
-}
+    @field:NotNull var deviceType: DeviceType? = null,
+    @field:NotNull var deviceId: String? = null
+)
