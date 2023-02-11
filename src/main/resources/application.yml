@@ -2,7 +2,9 @@ spring:
   application:
     name: extended-mysql-kotlin-skeleton
 
+  config:
+    import: optional:configserver:http://config-user:${CONFIG_SERVER_PASSWORD:dev}@${CONFIG_SERVER_HOST:localhost}:8888
+
   cloud:
     config:
-      uri: http://config-user:${CONFIG_SERVER_PASSWORD:dev}@${CONFIG_SERVER_HOST:localhost}:8888
       failFast: true
