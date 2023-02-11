@@ -1,13 +1,13 @@
 package com.persoff68.fatodo.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.NestedConfigurationProperty
 
 @ConfigurationProperties(prefix = "app")
-class AppProperties {
-
-    var common: Common = Common()
-    var auth: Auth = Auth()
-
+data class AppProperties(
+    @NestedConfigurationProperty val common: Common = Common(),
+    @NestedConfigurationProperty val auth: Auth = Auth()
+) {
     class Common {
         var baseUrl: String = ""
         var apiUrl: String = ""
