@@ -7,8 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -17,16 +15,16 @@ class ExtendedMysqlKotlinSkeletonApplicationTests(@Autowired val mvc: MockMvc) {
     @WithCustomSecurityContext
     fun contextLoads() {
         main(arrayOf())
-        mvc.get("/")
-            .andExpect {
-                status { isNotFound() }
-            }
+        mvc.get("/").andExpect {
+            status { isNotFound() }
+        }
     }
 
     @Test
     @WithCustomSecurityContext
     fun testWrongPath() {
-        mvc.perform(MockMvcRequestBuilders.get("/wrong-path"))
-            .andExpect(MockMvcResultMatchers.status().isNotFound)
+        mvc.get("/wrong-path").andExpect {
+            status { isNotFound() }
+        }
     }
 }

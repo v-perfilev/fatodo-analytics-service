@@ -5,10 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.HttpHeaders
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.get
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -30,55 +28,62 @@ class JwtTokenFilterIT(@Autowired val mvc: MockMvc) {
 
     @Test
     fun testSuccessfulAuthorization() {
-        val headers = HttpHeaders()
-        headers.add("Authorization", "Bearer $userJwt")
-        mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
-            .andExpect(MockMvcResultMatchers.status().isNotFound)
+        mvc.get("/") {
+            header("Authorization", "Bearer $userJwt")
+        }.andExpect {
+            status { isNotFound() }
+        }
     }
 
     @Test
     fun testWrongPrefix() {
-        val headers = HttpHeaders()
-        headers.add("Authorization", "" + userJwt)
-        mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+        mvc.get("/") {
+            header("Authorization", "Prefix $userJwt")
+        }.andExpect {
+            status { isUnauthorized() }
+        }
     }
 
     @Test
     fun testNoHeader() {
-        mvc.perform(MockMvcRequestBuilders.get("/"))
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+        mvc.get("/").andExpect {
+            status { isUnauthorized() }
+        }
     }
 
     @Test
     fun testInvalidExpiredJwt() {
-        val headers = HttpHeaders()
-        headers.add("Authorization", "Bearer $invalidExpiredJwt")
-        mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+        mvc.get("/") {
+            header("Authorization", "Bearer $invalidExpiredJwt")
+        }.andExpect {
+            status { isUnauthorized() }
+        }
     }
 
     @Test
     fun testInvalidEmptyJwt() {
-        val headers = HttpHeaders()
-        headers.add("Authorization", "Bearer $invalidFormatJwt")
-        mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+        mvc.get("/") {
+            header("Authorization", "Bearer $invalidFormatJwt")
+        }.andExpect {
+            status { isUnauthorized() }
+        }
     }
 
     @Test
     fun testInvalidWrongTokenJwt() {
-        val headers = HttpHeaders()
-        headers.add("Authorization", "Bearer $invalidWrongTokenJwt")
-        mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+        mvc.get("/") {
+            header("Authorization", "Bearer $invalidWrongTokenJwt")
+        }.andExpect {
+            status { isUnauthorized() }
+        }
     }
 
     @Test
     fun testInvalidWrongUuidJwt() {
-        val headers = HttpHeaders()
-        headers.add("Authorization", "Bearer $invalidWrongUuidJwt")
-        mvc.perform(MockMvcRequestBuilders.get("/").headers(headers))
-            .andExpect(MockMvcResultMatchers.status().isUnauthorized)
+        mvc.get("/") {
+            header("Authorization", "Bearer $invalidWrongUuidJwt")
+        }.andExpect {
+            status { isUnauthorized() }
+        }
     }
 }
