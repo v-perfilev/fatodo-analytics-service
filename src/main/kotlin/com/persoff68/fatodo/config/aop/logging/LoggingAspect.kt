@@ -40,8 +40,7 @@ class LoggingAspect {
     }
 
     @Around("applicationPackagePointcut()")
-    @Throws(Throwable::class)
-    fun logAround(joinPoint: ProceedingJoinPoint): Any {
+    fun logAround(joinPoint: ProceedingJoinPoint): Any? {
         val declaringTypeName = joinPoint.signature.declaringTypeName
         val name = joinPoint.signature.name
         val args = Arrays.toString(joinPoint.args)

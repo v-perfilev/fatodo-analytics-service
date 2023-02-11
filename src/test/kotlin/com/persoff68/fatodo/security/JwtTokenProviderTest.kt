@@ -17,9 +17,9 @@ import java.util.UUID
 
 @ExtendWith(MockKExtension::class)
 class JwtTokenProviderTest {
-    private lateinit var jwtTokenProvider: JwtTokenProvider
-    private lateinit var appProperties: AppProperties
-    private lateinit var auth: AppProperties.Auth
+    lateinit var jwtTokenProvider: JwtTokenProvider
+    lateinit var appProperties: AppProperties
+    lateinit var auth: AppProperties.Auth
 
     @BeforeEach
     fun setup() {

@@ -102,6 +102,10 @@ sourceSets {
         compileClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
         runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
     }
+
+    getByName("contractTest") {
+        resources.srcDir("src/test/resources")
+    }
 }
 
 sonarqube {
