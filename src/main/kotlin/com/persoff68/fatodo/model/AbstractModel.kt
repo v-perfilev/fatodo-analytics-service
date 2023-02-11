@@ -7,9 +7,10 @@ import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
 
 @MappedSuperclass
-abstract class AbstractModel {
+abstract class AbstractModel(
     @Id
     @GeneratedValue(generator = "custom-uuid")
     @GenericGenerator(name = "custom-uuid", strategy = "com.persoff68.fatodo.model.generator.UpdatableUuidGenerator")
-    protected var id: UUID? = null
-}
+    @JvmField
+    var id: UUID? = null
+)

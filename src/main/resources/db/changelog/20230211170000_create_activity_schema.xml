@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <changeSet id="00000000000001" author="persoff68">
+
+        <createTable tableName="ftd_analytics_activity">
+            <column name="id" type="binary(16)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="device_type" type="varchar(31)"/>
+            <column name="device_id" type="varchar(127)"/>
+
+            <column name="created_by" type="binary(16)"/>
+            <column name="created_at" type="datetime"/>
+            <column name="last_modified_by" type="binary(16)"/>
+            <column name="last_modified_at" type="datetime"/>
+        </createTable>
+
+        <createIndex indexName="index_analytics_activity" tableName="ftd_analytics_activity">
+            <column name="device_id"/>
+            <column name="created_at"/>
+            <column name="last_modified_at"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
