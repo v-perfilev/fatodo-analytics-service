@@ -153,7 +153,7 @@ graalvmNative {
     binaries {
         named("main") {
             imageName.set("fatodo")
-            buildArgs.add("-J-Xmx3G")
+            buildArgs.add("-J-Xmx4G")
         }
     }
 }
