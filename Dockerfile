@@ -1,9 +1,9 @@
-FROM scratch
-COPY /build/build/native/nativeCompile/fatodo /app/fatodo
+FROM oraclelinux:8-slim
 
-# wait tool layer
-COPY ./etc/tools/wait wait
-RUN chmod +x wait
+COPY /build/native/nativeCompile/fatodo /fatodo
+COPY /etc/tools/wait wait
+COPY /etc/tools/start.sh start.sh
 
-# final command
-CMD wait && fatodo
+RUN chmod +x /start.sh
+
+CMD ["sh", "-c", "/start.sh"]
