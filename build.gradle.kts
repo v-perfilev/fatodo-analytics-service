@@ -71,7 +71,6 @@ dependencies {
     runtimeOnly("com.github.danielwegener:logback-kafka-appender:0.2.0-RC2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
-    implementation("com.google.code.gson:gson:2.10.1") // needed for processKotlinAot
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
