@@ -1,5 +1,5 @@
 FROM scratch
-COPY /build/build/native/nativeCompile/fatodo /app/fatodo
+COPY /build/native/nativeCompile/fatodo /app/fatodo
 
 # wait tool layer
 COPY ./etc/tools/wait wait
