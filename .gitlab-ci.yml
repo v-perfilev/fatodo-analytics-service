@@ -2,4 +2,4 @@
 include:
   - project: 'fatodo/fatodo-devops'
     ref: 'master'
-    file: 'pipelines/skeleton-kotlin-pipeline.yml'
+    file: 'pipelines/service-kotlin-pipeline.yml'
