@@ -1,6 +1,6 @@
 spring:
   application:
-    name: fatodo-analytics-service
+    name: analytics-service
 
   config:
     import: optional:configserver:http://config-user:${CONFIG_SERVER_PASSWORD:dev}@${CONFIG_SERVER_HOST:localhost}:8888
