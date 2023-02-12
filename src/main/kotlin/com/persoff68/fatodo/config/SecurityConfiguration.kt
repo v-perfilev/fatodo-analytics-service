@@ -5,9 +5,9 @@ import com.persoff68.fatodo.security.filter.SecurityLocalFilter
 import com.persoff68.fatodo.security.filter.SecurityProblemSupport
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.config.annotation.web.invoke
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
@@ -17,40 +17,32 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 class SecurityConfiguration(
     private val securityProblemSupport: SecurityProblemSupport,
     private val jwtTokenFilter: JwtTokenFilter,
     private val securityLocaleFilter: SecurityLocalFilter
 ) {
-    companion object {
-        private val publicUrls = arrayOf(
-            "/management/**",
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/swagger-ui.html"
-        )
-    }
-
     @Bean
-    fun configure(http: HttpSecurity): SecurityFilterChain {
-        http
-            .csrf().disable()
-            .cors()
-            .and()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .httpBasic().disable()
-            .exceptionHandling()
-            .authenticationEntryPoint(securityProblemSupport)
-            .accessDeniedHandler(securityProblemSupport)
-            .and()
-            .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
-            .addFilterAfter(securityLocaleFilter, UsernamePasswordAuthenticationFilter::class.java)
-            .authorizeHttpRequests()
-            .requestMatchers(*publicUrls).permitAll()
-            .anyRequest().authenticated()
+    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+        http {
+            csrf { disable() }
+            cors { }
+            sessionManagement { sessionCreationPolicy = SessionCreationPolicy.STATELESS }
+            httpBasic { disable() }
+            exceptionHandling {
+                authenticationEntryPoint = securityProblemSupport
+                accessDeniedHandler = securityProblemSupport
+            }
+            addFilterBefore<UsernamePasswordAuthenticationFilter>(jwtTokenFilter)
+            addFilterAfter<UsernamePasswordAuthenticationFilter>(securityLocaleFilter)
+            authorizeRequests {
+                authorize("/management/**", permitAll)
+                authorize("/v3/api-docs/**", permitAll)
+                authorize("/swagger-ui/**", permitAll)
+                authorize("/swagger-ui.html", permitAll)
+                authorize(anyRequest, authenticated)
+            }
+        }
         return http.build()
     }
 

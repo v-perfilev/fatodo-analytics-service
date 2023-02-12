@@ -64,10 +64,11 @@ dependencies {
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("org.hibernate.orm:hibernate-core:6.1.7.Final")
     implementation("mysql:mysql-connector-java:8.0.32")
-    implementation("org.liquibase:liquibase-core:4.19.0")
+    implementation("org.liquibase:liquibase-core:4.17.0")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("io.micrometer:micrometer-registry-influx:1.10.3")
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
+    // implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     runtimeOnly("com.github.danielwegener:logback-kafka-appender:0.2.0-RC2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
@@ -152,7 +153,7 @@ graalvmNative {
     binaries {
         named("main") {
             imageName.set("fatodo")
-            buildArgs.add("-J-Xmx4G")
+            buildArgs.add("-J-Xmx6G")
         }
     }
 }
