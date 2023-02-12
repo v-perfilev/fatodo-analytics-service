@@ -1,4 +1,4 @@
-FROM scratch
+FROM alpine:3.17
 COPY /build/native/nativeCompile/fatodo /app/fatodo
 
 # wait tool layer
