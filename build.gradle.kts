@@ -67,7 +67,6 @@ dependencies {
     implementation("org.liquibase:liquibase-core:4.17.0")
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("io.micrometer:micrometer-registry-influx:1.10.3")
-    // implementation("org.springdoc:springdoc-openapi-ui:1.6.14")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     runtimeOnly("com.github.danielwegener:logback-kafka-appender:0.2.0-RC2")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")

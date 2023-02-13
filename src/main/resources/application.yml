@@ -8,3 +8,19 @@ spring:
   cloud:
     refresh:
       enabled: false
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, health
+      base-path: /management
