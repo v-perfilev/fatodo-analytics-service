@@ -5,8 +5,6 @@ import com.persoff68.fatodo.exception.AbstractException
 import mu.KotlinLogging
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.ProceedingJoinPoint
-import org.aspectj.lang.annotation.AfterThrowing
-import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Pointcut
 import org.springframework.stereotype.Component
@@ -27,7 +25,8 @@ class LoggingAspect {
         // pointcut for controllers and services
     }
 
-    @AfterThrowing(pointcut = "applicationPackagePointcut()", throwing = "e")
+    // TODO uncomment after update to Spring Boot 3.0.3
+    // @AfterThrowing(pointcut = "applicationPackagePointcut()", throwing = "e")
     fun logAfterThrowing(joinPoint: JoinPoint, e: Throwable) {
         val declaringTypeName = joinPoint.signature.declaringTypeName
         val name = joinPoint.signature.name
@@ -39,7 +38,8 @@ class LoggingAspect {
         }
     }
 
-    @Around("applicationPackagePointcut()")
+    // TODO uncomment after update to Spring Boot 3.0.3
+    // @Around("applicationPackagePointcut()")
     fun logAround(joinPoint: ProceedingJoinPoint): Any? {
         val declaringTypeName = joinPoint.signature.declaringTypeName
         val name = joinPoint.signature.name
