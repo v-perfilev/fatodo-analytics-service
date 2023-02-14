@@ -26,7 +26,7 @@ interface ActivityRepository : JpaRepository<Activity, UUID> {
     @Query(
         """
             delete from Activity a
-            where a.createdAt = a.lastModifiedAt and a.lastModifiedAt > :threshold
+            where a.createdAt = a.lastModifiedAt and a.lastModifiedAt < :threshold
         """
     )
     @Modifying
