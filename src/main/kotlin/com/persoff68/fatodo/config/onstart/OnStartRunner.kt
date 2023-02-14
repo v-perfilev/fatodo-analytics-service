@@ -45,7 +45,7 @@ class OnStartRunner(
             """
                     Application $appName is running!
                     Access URL: $protocol://$host:$port
-                    Profile(s): $profiles.joinToString(separator = ", ")
+                    Profile(s): ${profiles!!.joinToString(separator = ", ")}
                 """
         )
     }
