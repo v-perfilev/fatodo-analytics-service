@@ -3,13 +3,13 @@
     <springProperty scope="context" name="server-name" source="HOSTNAME"/>
 
     <!-- Stdout Appender -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} %-20([${app-name}]) %-7([%level]) %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <root level="info">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="stdout"/>
     </root>
 
     <!-- Kafka Appender -->
@@ -23,8 +23,15 @@
 
         <producerConfig>bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS:-localhost:9092}</producerConfig>
     </appender>
-    <root level="info">
+
+    <!-- Async Kafka Appender -->
+    <appender name="asyncKafkaAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <neverBlock>true</neverBlock>
         <appender-ref ref="kafkaAppender"/>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="asyncKafkaAppender"/>
     </root>
 
 </configuration>
