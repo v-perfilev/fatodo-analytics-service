@@ -12,21 +12,19 @@
         <appender-ref ref="STDOUT"/>
     </root>
 
-    <springProfile name="stage,prod">
-        <!-- Kafka Appender -->
-        <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
-            <encoder>
-                <pattern>%d{HH:mm:ss.SSS} %([${app-name}]) %([${server-name}]) %([%level]) %logger{36} - %msg%n</pattern>
-            </encoder>
-            <topic>fatodo-logs</topic>
-            <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
-            <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
+    <!-- Kafka Appender -->
+    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %([${app-name}]) %([${server-name}]) %([%level]) %logger{36} - %msg%n</pattern>
+        </encoder>
+        <topic>fatodo-logs</topic>
+        <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
+        <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
 
-            <producerConfig>bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS:-localhost:9092}</producerConfig>
-        </appender>
-        <root level="info">
-            <appender-ref ref="kafkaAppender"/>
-        </root>
-    </springProfile>
+        <producerConfig>bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS:-localhost:9092}</producerConfig>
+    </appender>
+    <root level="info">
+        <appender-ref ref="kafkaAppender"/>
+    </root>
 
 </configuration>
