@@ -11,5 +11,6 @@ import jakarta.persistence.Table
 class Activity(
     @Enumerated(EnumType.STRING)
     val deviceType: DeviceType? = null,
-    val deviceId: String? = null
+    val deviceId: String? = null,
+    var counter: Int = 1
 ) : AbstractAuditingModel()

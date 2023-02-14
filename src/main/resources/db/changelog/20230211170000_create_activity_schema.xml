@@ -13,6 +13,7 @@
 
             <column name="device_type" type="varchar(31)"/>
             <column name="device_id" type="varchar(127)"/>
+            <column name="counter" type="int"/>
 
             <column name="created_by" type="binary(16)"/>
             <column name="created_at" type="datetime"/>

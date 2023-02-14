@@ -18,6 +18,7 @@ class ActivityService(private val activityRepository: ActivityRepository) {
     fun writeActivity(userId: UUID, deviceType: DeviceType, deviceId: String) {
         val threshold = InstantUtils.getPastInstant(THRESHOLD_SECONDS)
         val activity = activityRepository.findCurrent(userId, deviceId, threshold) ?: Activity(deviceType, deviceId)
+        activity.counter++
         activityRepository.save(activity)
     }
 
