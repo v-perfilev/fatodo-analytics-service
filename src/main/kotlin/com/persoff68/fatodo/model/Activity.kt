@@ -12,5 +12,5 @@ class Activity(
     @Enumerated(EnumType.STRING)
     val deviceType: DeviceType? = null,
     val deviceId: String? = null,
-    var counter: Int = 1
+    var counter: Int = 0
 ) : AbstractAuditingModel()
