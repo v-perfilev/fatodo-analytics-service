@@ -34,7 +34,7 @@ class DatabaseConfiguration(private val appProperties: AppProperties, private va
     private fun removeExpiredLocks() {
         val timeoutInMillis = appProperties.db.liquibaseLockTimeoutSec * 1000
         val lastLockTime = Timestamp(System.currentTimeMillis() - timeoutInMillis)
-        val query = String.format("DELETE FROM DATABASECHANGELOGLOCK WHERE LOCKED=true AND LOCKGRANTED<'%s'", lastLockTime)
+        val query = "DELETE FROM DATABASECHANGELOGLOCK WHERE LOCKED=true AND LOCKGRANTED<'$lastLockTime'"
         try {
             dataSource.connection.createStatement().use { statement ->
                 val updateCount = statement.executeUpdate(query)
