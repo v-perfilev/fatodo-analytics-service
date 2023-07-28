@@ -12,7 +12,6 @@ import java.sql.SQLException
 import java.sql.Timestamp
 import javax.sql.DataSource
 
-
 @Configuration
 @EnableJpaRepositories(basePackages = [AppConstants.REPOSITORY_PATH])
 @EnableJpaAuditing(auditorAwareRef = "securityAuditorAware")
