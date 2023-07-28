@@ -5,6 +5,8 @@ import com.persoff68.fatodo.exception.AbstractException
 import mu.KotlinLogging
 import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.ProceedingJoinPoint
+import org.aspectj.lang.annotation.AfterThrowing
+import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Pointcut
 import org.springframework.stereotype.Component
@@ -25,32 +27,30 @@ class LoggingAspect {
         // pointcut for controllers and services
     }
 
-    // TODO uncomment after update to Spring Boot 3.0.3
-    // @AfterThrowing(pointcut = "applicationPackagePointcut()", throwing = "e")
+    @AfterThrowing(pointcut = "applicationPackagePointcut()", throwing = "e")
     fun logAfterThrowing(joinPoint: JoinPoint, e: Throwable) {
         val declaringTypeName = joinPoint.signature.declaringTypeName
         val name = joinPoint.signature.name
         val message = if (e.message != null) e.message else "NULL"
         if (e is AbstractException) {
-            logger.warn("Exception in {}.{}() with cause = {}", declaringTypeName, name, message)
+            logger.warn("Exception in $declaringTypeName.$name() with cause = $message")
         } else {
-            logger.error("Exception in {}.{}() with cause = {}", declaringTypeName, name, message)
+            logger.error("Exception in $declaringTypeName.$name() with cause = $message")
         }
     }
 
-    // TODO uncomment after update to Spring Boot 3.0.3
-    // @Around("applicationPackagePointcut()")
+    @Around("applicationPackagePointcut()")
     fun logAround(joinPoint: ProceedingJoinPoint): Any? {
         val declaringTypeName = joinPoint.signature.declaringTypeName
         val name = joinPoint.signature.name
         val args = Arrays.toString(joinPoint.args)
-        logger.debug("Enter: {}.{}() with argument[s] = {}", declaringTypeName, name, args)
+        logger.debug("Enter: $declaringTypeName.$name() with argument[s] = $args")
         return try {
             val result = joinPoint.proceed()
-            logger.debug("Exit: {}.{}() with result = {}", declaringTypeName, name, result)
+            logger.debug("Exit: $declaringTypeName.$name() with result = $result")
             result
         } catch (e: IllegalArgumentException) {
-            logger.error("Illegal argument: {} in {}.{}()", args, declaringTypeName, name)
+            logger.error("Illegal argument: $args in $declaringTypeName.$name()")
             throw e
         }
     }
